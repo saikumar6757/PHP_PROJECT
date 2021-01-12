@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     }elseif(!preg_match("/^[a-zA-Z0-9]*/",$username)){
         header("Location: ../register.php?error=invalidusername&username=".$username);
         exit();
-    }elseif($password !== $confirmPass){
+    }elseif($password != $confirmPass){
         header("Location: ../register.php?error=passwordsdonotmatch&username=".$username);
         exit();
     }else{
@@ -41,13 +41,12 @@ if(isset($_POST['submit'])){
                header('Location: ../register.php?error=sqlerror');
                exit();
              }else{
-                $hashedPass = password_hash($password, PASSWORD_DEFAULT);
-                
-                mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-                mysqli_stmt_execute($stmt);
-                mysqli_stmt_store_result($stmt);
-                  header('Location: ../register.php?success=registered');
-                  exit();
+                    $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+
+                    mysqli_stmt_bind_param($stmt, "ss", $username, $hashedPass);
+                    mysqli_stmt_execute($stmt);
+                        header("Location: ../register.php?succes=registered");
+                        exit();
              }
             }
          }

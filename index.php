@@ -3,12 +3,17 @@
 ?>    
 
 <?php
-    if (isset($_SESSION['sessionId'])) {
-        echo "You are logged in!";
+    //echo $_SESSION["sessionId"]."<br>";
+        
+
+    if (isset($_SESSION["sessionId"])) {
+      echo "You are logged in!". $_SESSION["sessionId"];
     } else {
         echo "Home";
+
     }
 
+     
 ?>
 
 
@@ -16,3 +21,8 @@
 <?php
    require_once "includes/footer.php";
 ?>  
+
+
+
+
+ 

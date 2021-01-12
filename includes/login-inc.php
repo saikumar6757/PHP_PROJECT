@@ -7,6 +7,8 @@ if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
     
+   
+    
     if (empty($username) || empty($password)) {
         header("Location: ../index.php?error=emptyfields");
         exit();
@@ -21,15 +23,19 @@ if(isset($_POST['submit'])){
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             
+             
+            
             if ($row = mysqli_fetch_assoc($result)) {
+                
                 $passCheck = password_verify($password, $row['password']);
+                
                 if ($passCheck == false) {
                     header("Location: ../index.php?error=wrongpass");
                     exit();  
                 } elseif ($passCheck == true) {
                     session_start();
-                    $_SESSION['sessionId'] = $row['id'];
-                    $_SESSION['sessionUser'] = $row['username'];
+                    $_SESSION["sessionId"] = $row['id'];
+                    $_SESSION["sessioniUser"] = $row['username'];
                     header("Location: ../index.php?success=loggedin");
                     exit();
                 } else {
