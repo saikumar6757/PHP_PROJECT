@@ -37,7 +37,8 @@ if(isset($_POST['submit'])){
                     $_SESSION["sessionId"] = $row['id'];
                     $_SESSION["sessioniUser"] = $row['username'];
                     header("Location: ../index.php?success=loggedin");
-                    exit();
+                        exit();
+                   
                 } else {
                     header("Location: ../index.php?error=wrongpass");
                     exit();

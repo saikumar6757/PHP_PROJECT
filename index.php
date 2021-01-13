@@ -3,18 +3,26 @@
 ?>    
 
 <?php
-    //echo $_SESSION["sessionId"]."<br>";
-        
+    
 
     if (isset($_SESSION["sessionId"])) {
-      echo "You are logged in!". $_SESSION["sessionId"];
+      //echo "You are logged in!";
+        
+      header("Location:files.php");  
+      //session_destroy();
     } else {
-        echo "Home";
+        echo "Login First!!";
 
     }
 
+    
+
+?>    
      
-?>
+
+
+
+
 
 
 
